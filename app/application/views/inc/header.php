@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/mdl/material.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/google-styles.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/main.css">
     <style>
     #view-source {
       position: fixed;
