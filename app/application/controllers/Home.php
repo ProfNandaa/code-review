@@ -4,16 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends CI_Controller {
 
 	private $data;
-	private $git_config = array(
-				'client_id' => '450698595794669db58b',
-				'client_secret' => '0ca68f68d6529c0c91ea3b65d490fdf2e9062f7d',
-				'redirect_url' => 'http://localhost/code-review/app/home/welcome', 
-				'app_name' => 'CodeReview'
-			);
+	private $git_config;
 
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->config("github");
+		$this->git_config = $this->config->config['github'];
 		$this->load->model("user_model");
 	}
 
