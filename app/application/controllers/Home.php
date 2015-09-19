@@ -12,9 +12,23 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->is_logged_in();
 		$this->data["main"] = "home/index";
 		$this->_load_view();
 	}
 
+	public function welcome()
+	{
+		$this->data["plain"] = true;
+		$this->data["main"] = "home/welcome";
+		$this->_load_view();
+	}
+
+	private function is_logged_in()
+	{
+		if (!$this->userdata->is_logged_in) {
+			redirect("home/welcome");
+		}
+	}
 
 }
