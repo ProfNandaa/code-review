@@ -21,12 +21,6 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->github_data) {
-			$this->user_model->register_user();
-		} else {
-			redirect("home/login");
-		}
-		// var_dump($this->session->github_data); die();
 		$this->is_logged_in();
 		$this->data["main"] = "home/index";
 		$this->_load_view();
@@ -40,9 +34,10 @@ class Home extends CI_Controller {
 			$git->getUserDetails();
 			$this->session->set_userdata('github_data',$git->getAllUserDetails());
 			$this->session->set_userdata('is_logged_in', true);
+			$this->user_model->register_user();
 			redirect("home/index");
 		}
-		if ($this->session->github_data) {
+		if ($this->session->github_data) {			
 			redirect("home/index");
 		}
 

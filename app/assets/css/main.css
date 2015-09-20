@@ -4,3 +4,17 @@
 .mdl-menu a {
 	text-decoration: none;
 }
+
+.mdl-data-table {
+	width: 100%;
+}
+
+.mdl-data-table td,
+.mdl-data-table th {
+	text-align: left;
+}
+
+/*forms*/
+input[type=text] {
+	width: 100%;
+}
