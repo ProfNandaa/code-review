@@ -12,7 +12,7 @@
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background: url('<?php echo base_url(); ?>/assets/images/welcome_card.jpg') center / cover;
+  background: url('https://developer.github.com/images/header-animation-short-loop.gif') right / cover;
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
