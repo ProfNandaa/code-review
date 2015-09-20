@@ -134,6 +134,15 @@ class GithubApi {
 		$this->user = $this->sendRequest($config);
 	}
 	
+	public function sendGeneralReq($url) {
+		$config = array('method' => 'GET',
+						'header' => array("Content-Type: application/x-www-form-urlencoded",
+										  "Accept: application/json",
+										  "User-Agent: ".$this->app_name),
+						'url' => $url);
+		return $this->sendRequest($config);
+	}
+
 	public function getUserDetails() {
 		$this->sendUserDetailsReq();
 	}

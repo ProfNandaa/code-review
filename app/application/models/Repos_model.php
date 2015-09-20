@@ -21,4 +21,15 @@ class Repos_model extends CI_Model {
 		$this->db->where("uid", $uid);
 		return $this->db->get("repo");
 	}
+
+	function get_repo($rid)
+	{
+		$this->db->where("rid", $rid);
+		$result = $this->db->get("repo");
+		if ($result->num_rows() > 0) {
+			$result = $result->result();
+			return $result[0];
+		}
+		return false;
+	}
 }

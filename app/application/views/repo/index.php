@@ -31,7 +31,7 @@
             echo "<td>" . $row->username . "</td>";
             echo "<td>" . anchor($row->url, $row->repo, "target=_blank") 
                 . "</td>";
-            echo "<td>" . anchor("#", "See Review") . "</td>";
+            echo "<td>" . anchor("repos/review/" . $row->rid, "See Review") . "</td>";
             echo "</tr>";
           }
         ?>

@@ -4,12 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Repos extends CI_Controller {
 
 	private $data;
+	private $git_config;
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model("repos_model");
 		$this->is_logged_in();
+		$this->load->config("github");
+		$this->git_config = $this->config->config['github'];
 	}
 
 	private function _load_view()
@@ -55,6 +58,33 @@ class Repos extends CI_Controller {
 				}
 				redirect("repos");
 			}
+		}
+	}
+
+	public function review($id = 0)
+	{
+		$repo = $this->repos_model->get_repo($id);
+		if ($repo) {
+			$url = "https://api.github.com/repos/" . $repo->username .
+						"/" . $repo->repo . "/comments";
+
+			// redirect($url);
+			$this->load->library("GithubApi", $this->git_config);
+			$res = $this->githubapi->sendGeneralReq($url);
+
+			$comments = $res[1];
+			if (count($comments) > 0) {
+				$sample = $comments[0];
+
+				echo "<h2>//Sample</h2>";
+				var_dump($sample->user->login);
+				var_dump($sample->body);
+				echo "<h2>//Full</h2>";
+				var_dump($comments);
+			}
+
+		} else {
+			redirect("repos");
 		}
 	}
 
